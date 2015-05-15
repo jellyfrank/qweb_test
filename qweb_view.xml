@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="qweb_test_form_view" model="ir.ui.view">
+			<field name="name">qweb.test.form</field>
+			<field name="model">qweb.test</field>
+			<field name="arch" type="xml">
+				<form string="Qweb form">
+					<field name="name"/>
+				</form>
+			</field>
+		</record>
+
+		<record id="qweb_test_form_view" model="ir.ui.view">
+			<field name="name">qweb.test.form</field>
+			<field name="model">qweb.test</field>
+			<field name="arch" type="xml">
+				<tree string="Qweb form">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_qweb_test" model="ir.actions.act_window">
+			<field name="name">action.qweb.form</field>
+			<field name="res_model">qweb.test</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_qweb_test" name="Qweb" />
+		<menuitem id="menu_qweb_test2" name="Qweb" parent="menu_qweb_test"/>
+		<menuitem id="menu_qweb_test3" name="Qweb" parent="menu_qweb_test2" action="action_qweb_test"/>
+
+		<!--Report-->
+		<report id="qweb_test_report" model="qweb.test" string="Report Test" report_type="qweb-pdf"
+			name="qweb_test.test_report" file="qweb_test.test_report"/>
+
+		<template id="test_report">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="o">
+					o
+				</t>
+			</t>
+		</template>
+
+	</data>
+</openerp>
